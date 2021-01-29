@@ -11,18 +11,19 @@ import {
 // import { environment } from "../../../environments/environment";
 import { AuthActions } from '../action.type';
 import { login } from '../auth.actions';
+import { User } from '../model/user.model';
 
 export interface AuthState {
-
+  user: User;
 }
 
 export const initialAuthState: AuthState = {
   user: undefined
 };
 
-export const reducers: ActionReducerMap<AuthState> = {
+// export const reducers: ActionReducerMap<AuthState> = {
 
-};
+// };
 
 
 // export const metaReducers: MetaReducer<AuthState>[] = !environment.production ? [] : [];
