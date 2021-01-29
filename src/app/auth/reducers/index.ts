@@ -38,7 +38,7 @@ export const authReducers = createReducer(
       // debugger;
       return {
         user: action.user
-      }
+      };
     }
   )
 );
