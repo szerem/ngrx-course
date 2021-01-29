@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
             // zamiast:
             // this.store.dispatch(login({user:user}));
             // zamiast:
-            this.store.dispatch(AuthActions.login({user}));
+            this.store.dispatch(login({user}));
 
             this.router.navigateByUrl('/courses');
         })
