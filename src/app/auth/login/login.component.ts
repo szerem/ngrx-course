@@ -9,6 +9,7 @@ import {noop} from "rxjs";
 import {Router} from "@angular/router";
 import { AppState } from '../reducers';
 import { login } from '../auth.actions';
+import { AuthActions } from '../action.type';
 
 @Component({
   selector: 'login',
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
             // zamiast:
             // this.store.dispatch(login({user:user}));
             // zamiast:
-            this.store.dispatch(login({user}));
+            this.store.dispatch(AuthActions.login({user}));
 
             this.router.navigateByUrl('/courses');
         })
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         noop,
         () => alert('Login Failed')
-      )
+      );
 
   }
 
