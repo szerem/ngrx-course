@@ -5,6 +5,7 @@ import {map, tap} from 'rxjs/operators';
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import { AppState } from './reducers';
 import { AuthService } from './auth/auth.service';
+import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
 // import { logout } from './auth/auth.actions';
 
 @Component({
@@ -43,16 +44,20 @@ export class AppComponent implements OnInit {
 
       this.isLoggedIn$ = this.store
       .pipe(
-        map(state => !!state["auth"].user),
+        select(isLoggedIn)
+        // zamiast
+        // select(state => !!state["auth"].user),
+        // zamiast
+        // map(state => !!state["auth"].user)
+
         // tap(data => console.log("AAAAAAAAAAA", data))
       )
       ;
 
       this.isLoggedOut$ = this.store
       .pipe(
-        map(state => !state["auth"].user),
-      )
-      ;
+        select(isLoggedOut),
+      );
 
       this.store.subscribe(state => console.log('Moj stan', state));
 
