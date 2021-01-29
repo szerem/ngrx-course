@@ -5,6 +5,9 @@
 > ng add @ngrx/store-devtools
 
 install Redux DevTools Extension to chrom browser from http://extension.remotedev.io/ (ctrl + sheft + e)
+dodajemy store to modulu auth.module
+
+> ng g store auth/Auth --module auth.module.ts
 
 ---
 
