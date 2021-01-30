@@ -8,6 +8,7 @@ import {CoursesHttpService} from '../services/courses-http.service';
 
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.css']
@@ -17,6 +18,7 @@ export class CourseComponent implements OnInit {
   course$: Observable<Course>;
 
   lessons$: Observable<Lesson[]>;
+  loading$: Observable<boolean>;
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
@@ -36,7 +38,7 @@ export class CourseComponent implements OnInit {
 
     this.lessons$ = this.course$.pipe(
       concatMap(course => this.coursesService.findLessons(course.id)),
-      tap(x => console.log('CourseComponent.ngOnInit()',x))
+      tap(x => console.log('CourseComponent.ngOnInit()', x))
     );
 
   }
