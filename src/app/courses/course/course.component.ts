@@ -36,7 +36,7 @@ export class CourseComponent implements OnInit {
 
     this.lessons$ = this.course$.pipe(
       concatMap(course => this.coursesService.findLessons(course.id)),
-      tap(console.log)
+      tap(x => console.log('CourseComponent.ngOnInit()',x))
     );
 
   }

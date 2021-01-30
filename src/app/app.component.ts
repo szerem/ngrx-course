@@ -6,8 +6,7 @@ import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Route
 import { AppState } from './reducers';
 import { AuthService } from './auth/auth.service';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
-import { logout } from './auth/auth.actions';
-// import { AuthActions } from './auth/action.type';
+import { login, logout } from './auth/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +23,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+      const userProfile = localStorage.getItem('user');
+      if (userProfile) {
+        this.store.dispatch(login({user: JSON.parse(userProfile)}));
+      }
+
       this.router.events.subscribe(event  => {
         switch (true) {
           case event instanceof NavigationStart: {
@@ -60,7 +64,7 @@ export class AppComponent implements OnInit {
         select(isLoggedOut),
       );
 
-      this.store.subscribe(state => console.log('Moj stan', state));
+      this.store.subscribe(state => console.log('AppComponent.ngOnInit store.state', state));
 
     }
 
