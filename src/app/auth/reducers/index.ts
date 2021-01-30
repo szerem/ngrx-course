@@ -10,7 +10,7 @@ import {
 } from '@ngrx/store';
 // import { environment } from "../../../environments/environment";
 import { AuthActions } from '../action.type';
-import { login } from '../auth.actions';
+import { login, logout } from '../auth.actions';
 import { User } from '../model/user.model';
 
 export interface AuthState {
@@ -32,16 +32,22 @@ export const authReducers = createReducer(
 
   initialAuthState,
 
-  on( login,
-    (state, action) => {
+  on(AuthActions.login, (state, action) => {
       // console.log('Calling login reducer');
       // console.log(state, action);
       // debugger;
       return {
-        user: action.user
+          user: action.user
       };
-    }
-  )
+  }),
+
+  on(AuthActions.logout, (state, action) => {
+      return {
+          user: undefined
+      };
+  })
+
+
 );
 
 /*

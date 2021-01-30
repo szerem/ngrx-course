@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AuthState } from './reducers';
 
 
-export const selectAuthState = createFeatureSelector<AuthState>('auth');
+ export const selectAuthState = createFeatureSelector<AuthState>('auth');
 
 export const isLoggedIn = createSelector(
   selectAuthState,
@@ -11,13 +11,13 @@ export const isLoggedIn = createSelector(
 // zamiast
 // export const isLoggedIn = createSelector(
 //   state => state["auth"],
-//   (auth) =>  !!auth.user
+//   (auth: AuthState) =>  !!auth.user
 // );
 
 
 export const isLoggedOut = createSelector(
   isLoggedIn,
-  loggedIn => !isLoggedOut
+  loggedIn => !loggedIn
 );
 // zamiast
 // export const isLoggedOut = createSelector(

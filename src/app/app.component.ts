@@ -6,7 +6,8 @@ import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Route
 import { AppState } from './reducers';
 import { AuthService } from './auth/auth.service';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
-// import { logout } from './auth/auth.actions';
+import { logout } from './auth/auth.actions';
+// import { AuthActions } from './auth/action.type';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +51,7 @@ export class AppComponent implements OnInit {
         // zamiast
         // map(state => !!state["auth"].user)
 
-        // tap(data => console.log("AAAAAAAAAAA", data))
+        // ,tap(data => console.log("AAAAAAAAAAA", data))
       )
       ;
 
@@ -64,33 +65,7 @@ export class AppComponent implements OnInit {
     }
 
     logout() {
-      // this.store.dispatch(logout());
+      this.store.dispatch(logout());
     }
 
 }
-
-
-
-
-//  this.auth.login(val.email, val.password)
-//       .pipe(
-//         tap(user => {
-//             console.log(user);
-//             // this.store.dispatch({
-//             //    type: 'Login Action',
-//             //    payload: {
-//             //      userProfile: user
-//             //    }
-//             // });
-//             // zamiast:
-//             // this.store.dispatch(login({user:user}));
-//             // zamiast:
-//             this.store.dispatch(login({user}));
-
-//             this.router.navigateByUrl('/courses');
-//         })
-//       )
-//       .subscribe(
-//         noop,
-//         () => alert('Login Failed')
-//       );
