@@ -30,3 +30,8 @@ export const selectPromoTotal = createSelector(
   courses => courses.filter(course => course.promo).length
 );
 
+
+export const areCoursesLoaded = createSelector(
+  selectCoursesState,
+  state => state.allCoursesLoaded
+);
