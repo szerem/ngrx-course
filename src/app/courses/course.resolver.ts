@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { first, tap } from 'rxjs/operators';
+import { finalize, first, tap } from 'rxjs/operators';
 
 @Injectable()
 export class CourseResolver implements Resolve<any> {
@@ -25,7 +25,8 @@ export class CourseResolver implements Resolve<any> {
           }
 
         }),
-        first()
+        first(),
+        finalize(() => this.loading = false)
       );
   }
 
