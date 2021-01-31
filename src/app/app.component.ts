@@ -55,7 +55,8 @@ export class AppComponent implements OnInit {
         // zamiast
         // map(state => !!state["auth"].user)
 
-        // ,tap(data => console.log("AAAAAAAAAAA", data))
+        // ,tap(data =>
+        // ("AAAAAAAAAAA", data))
       )
       ;
 

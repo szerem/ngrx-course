@@ -1,4 +1,4 @@
-import { CoursesHttpService } from './../services/courses-http.service';
+import { CoursesHttpService } from './services/courses-http.service';
 import { tap, concatMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';

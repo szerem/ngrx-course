@@ -1,5 +1,5 @@
 import { loadAllCourses } from './course.actions';
-import { AppState } from './../../reducers/index';
+import { AppState } from '../reducers/index';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
