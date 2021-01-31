@@ -29,7 +29,7 @@ import { CourseResolver } from './course.resolver';
 import { EffectsModule } from '@ngrx/effects';
 import { CourseEffects } from './course.effects';
 import { StoreModule } from '@ngrx/store';
-import { coursesReducers } from './reducers';
+import { coursesReducers } from './course.reducers';
 
 
 

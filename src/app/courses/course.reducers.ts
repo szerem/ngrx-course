@@ -1,8 +1,8 @@
-import { Course } from './../model/course';
+import { Course } from './model/course';
 import { createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { CourseActions } from '../action.type';
-import { allCoursesLoaded } from '../course.actions';
+import { CourseActions } from './action.type';
+import { allCoursesLoaded } from './course.actions';
 
 export interface CoursesState extends EntityState<Course> {
 
