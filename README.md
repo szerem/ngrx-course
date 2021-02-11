@@ -1,3 +1,57 @@
+# Zaprojektowac rozwiazanie
+
+1. Zdefiniowac akcje ktora potrzebujemy do zaimplementowania np
+   po nacisnieciu save
+   tworzymy nowa instancje obiektu
+   wysylamy do api na metode save
+
+```javascript
+export const courseUpdated = createAction(
+  '[Edit Course Dialog]  Course Updated',
+  props<{update: Update<Course>}>()
+);
+```
+
+2. do IU dodanie
+
+```javascript
+Update<Course> = {
+id: course.id,
+changes: course
+};
+
+this.store.dispatch(courseUpdated({update}));
+this.dialogRef.close();
+```
+
+3. course.reducers.ts
+
+```javascript
+on(CourseActions.courseUpdated,
+  (state, action) => {
+    return adapter.updateOne(action.update, state);
+  }
+),
+```
+
+4. courses.effects.ts
+
+```javascript
+saveCourse$ = createEffect(
+  () =>
+    this.actions$.pipe(
+      ofType(CourseActions.courseUpdated),
+      concatMap((action) =>
+        this.coursesHttpService.saveCourse(
+          action.update.id,
+          action.update.changes
+        )
+      )
+    ),
+  { dispatch: false }
+);
+```
+
 # Setp by step
 
 > ng add @ngrx/store
@@ -164,3 +218,15 @@ If you are looking for the Complete Typescript 2 Course - Build a REST API, the 
 [Github repo for this course](https://github.com/angular-university/complete-typescript-course)
 
 ![Complete Typescript Course](https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png)
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```

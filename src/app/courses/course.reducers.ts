@@ -2,7 +2,6 @@ import { compareCourses, Course } from './model/course';
 import { createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { CourseActions } from './action.type';
-import { allCoursesLoaded } from './course.actions';
 
 export interface CoursesState extends EntityState<Course> {
 
@@ -31,7 +30,15 @@ export const coursesReducers = createReducer(
 
   on(CourseActions.allCoursesLoaded,
     (state, action) => adapter.addAll(
-      action.courses, {...state, allCoursesLoaded: true }))
+      action.courses, {...state, allCoursesLoaded: true }
+    )
+  ),
+
+  on(CourseActions.courseUpdated,
+    (state, action) => {
+      return adapter.updateOne(action.update, state);
+    }
+  ),
 
 );
 
